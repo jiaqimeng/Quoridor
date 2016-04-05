@@ -37,18 +37,6 @@ public class GameState {
         }
     }
 
-    // old method
-//    public ArrayList<Point> getMoveSuccessors(Player currentPlayer, Player opponent) {
-//        ArrayList<Point> successors = new ArrayList<Point>();
-//        for (Node n : board.getNode(currentPlayer.getPosition()).getAdjacentList()) {
-//            if (n == board.getNode(opponent.getPosition())) {
-//                // jump player under construction
-//            }
-//            successors.add(n.getLabel());
-//        }
-//        return successors;
-//    }
-
     public ArrayList<Point> getMoveSuccessors2(Point p, Player opponent) {
         ArrayList<Point> successors = new ArrayList<Point>();
         for (Node n : board.getNode(p).getAdjacentList()) {

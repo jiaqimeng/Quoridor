@@ -5,7 +5,7 @@ import java.awt.Point;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by mengjiaqi on 3/27/16.
+ * Created by Richard Meng on 3/27/16.
  */
 public class QuoridorAgent {
     private GameState currentState;
@@ -112,10 +112,8 @@ public class QuoridorAgent {
         pq.add(pstart);
         int cost = 1;
         while (pq.size()!=0) {
-//            System.out.println(pq.size());
             PointWrapper current = pq.poll();
             if (state.isWin(p, current.getPoint(), true)) {
-//                System.out.println(current.getCost());
                 return current.getCost();
             }
             visited.put(current.getPoint(),current);
@@ -141,8 +139,6 @@ public class QuoridorAgent {
         pq.add(pstart);
         int cost = 1;
         while (pq.size()!=0) {
-//            System.out.println(pq.size());
-
             PointWrapper current = pq.poll();
             if (current.getPoint().getX()==target.getX() && current.getPoint().getY() == target.getY()) {
                 return current.cost;
@@ -221,29 +217,6 @@ public class QuoridorAgent {
 
     }
 
-//    public int maximumMahhatanHeuristic(GameState.Player player) {
-//        int maximumMahatton = mahhatanHeuristic(player) + Math.max(Math.abs(9-player.getX()), Math.abs(1-player.getX()));
-//        return maximumMahatton;
-//    }
-
-    // old version possibly wrong
-//    public double evaluationFunction(GameState state, GameState.Player player) {
-//        if (state.isWin(player, player.getPosition(), true)) {
-//            return 999999;
-//        }
-//        ArrayList<Integer> pathCosts = BFS(state, player);
-//        int optimalHeuristic = mahhatanHeuristic(player);
-//        int maximumMahattan = maximumMahhatanHeuristic(player);
-//        int minCost = Collections.min(pathCosts);
-//        if (minCost == Integer.MAX_VALUE) {
-//            minCost = -1;
-//        }
-//        double feature1 = 1.0/(double)(maximumMahattan - optimalHeuristic);
-//        double feature2 = 1.0/(double)minCost;
-//        double weight1 = 5;
-//        double weight2 = 73;
-//        return feature1*weight1 + feature2*weight2;
-//    }
     public static int sum(ArrayList<Integer> input) {
         int sum = 0;
         for (Integer i : input) {
@@ -291,37 +264,6 @@ public class QuoridorAgent {
 //        return feature4*weight4+feature2*weight2+feature3*weight3;
     }
 
-//    public double evaluationFunction(GameState state, Action a) {
-//        // action = 0: walk, action = 1: put planks
-//        if (state.isWin(state.getTurn(), a.getNextPosition())) {
-//            return 999999;
-//        }
-//        if (a.getActionType() == 0) {
-//            ArrayList<Integer> pathCosts = BFS(state, a.getNextPosition());
-//            int optimalHeuristic = mahhatanHeuristic(state.getTurn());
-//            int maximumMahattan = maximumMahhatanHeuristic(state.getTurn());
-//            int minCost = Collections.min(pathCosts);
-//            double feature1 = 1/(maximumMahattan - optimalHeuristic);
-//            double feature2 = 1/minCost;
-//            double weight1 = 1;
-//            double weight2 = 73;
-//            return feature1*weight1 + feature2*weight2;
-//        }
-//        else {
-//            state.getTurn().putPlank(state.getBoard(), a.getPlankX(), a.getPlankY(), a.getPlankDirection());
-//            ArrayList<Integer> pathCosts = BFS(state, state.getTurn().getPosition());
-//            int optimalHeuristic = mahhatanHeuristic(state.getTurn());
-//            int maximumMahhattan = maximumMahhatanHeuristic(state.getTurn());
-//            int minCost = Collections.min(pathCosts);
-//            double feature1 = 1/(maximumMahhattan - optimalHeuristic);
-//            double feature2 = 1/minCost;
-//            double weight1 = 1;
-//            double weight2 = 73;
-//            // after we simulating this process, we put the plank back.
-//            state.getTurn().removePlank(state.getBoard(), a.getPlankX(), a.getPlankY(), a.getPlankDirection());
-//            return feature1*weight1 + feature2*weight2;
-//        }
-//    }
 
     public Action valueIteration(GameState state, GameState.Player currentPlayer, GameState.Player opponent) {
         int depth = 2;
